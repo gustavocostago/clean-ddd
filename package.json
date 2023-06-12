@@ -11,6 +11,11 @@
   "license": "ISC",
   "devDependencies": {
     "@types/node": "^20.2.3",
-    "typescript": "^5.0.4"
+    "typescript": "^5.0.4",
+    "vitest": "^0.31.4"
+  },
+  "prettier": {
+    "semi": false,
+    "singleQuote": true
   }
 }
