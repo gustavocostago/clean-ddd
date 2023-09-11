@@ -1,6 +1,7 @@
-export class Student {
-  public name: string
-  constructor(name: string) {
-    this.name = name
-  }
+import { Entity } from '../../core/entities/entity'
+
+interface StudentProps {
+  name: string
 }
+
+export class Student extends Entity<StudentProps> {}
