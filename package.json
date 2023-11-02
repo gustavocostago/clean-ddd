@@ -24,5 +24,8 @@
   "prettier": {
     "semi": false,
     "singleQuote": true
+  },
+  "dependencies": {
+    "dayjs": "^1.11.10"
   }
 }
