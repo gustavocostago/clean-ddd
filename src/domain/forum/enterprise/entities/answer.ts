@@ -7,7 +7,7 @@ interface AnswerProps {
   authorId: UniqueEntityID
   content: string
   createdAt: Date
-  updateAt?: Date
+  updatedAt?: Date
 }
 export class Answer extends Entity<AnswerProps> {
   get questionId() {
@@ -22,11 +22,18 @@ export class Answer extends Entity<AnswerProps> {
   get createdAt() {
     return this.props.createdAt
   }
-  get updateAt() {
-    return this.props.updateAt
+  get updatedAt() {
+    return this.props.updatedAt
+  }
+  get excerpt() {
+    return this.content.substring(0, 120).trimEnd().concat('...')
+  }
+  private touch() {
+    this.props.updatedAt = new Date()
   }
   set content(content: string) {
     this.props.content = content
+    this.touch()
   }
   static create(
     props: Optional<AnswerProps, 'createdAt'>,
