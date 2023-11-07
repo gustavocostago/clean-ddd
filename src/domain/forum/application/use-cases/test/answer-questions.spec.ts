@@ -1,5 +1,5 @@
 import { InMemoryAnswersRepository } from 'test/repositories/in-memory-answers-repository'
-import { AnswerQuestionUseCase } from './answer-questions'
+import { AnswerQuestionUseCase } from '../answer-questions'
 
 let inMemoryAnswersRepository: InMemoryAnswersRepository
 let sut: AnswerQuestionUseCase
