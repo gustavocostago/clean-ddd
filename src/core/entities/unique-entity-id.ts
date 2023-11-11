@@ -6,7 +6,7 @@ export class UniqueEntityID {
   toString() {
     return this.value
   }
-  toValeu() {
+  toValue() {
     return this.value
   }
   constructor(value?: string) {
