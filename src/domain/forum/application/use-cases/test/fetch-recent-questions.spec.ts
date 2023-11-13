@@ -11,17 +11,15 @@ describe('Fetch Recent Questions', () => {
     sut = new FetchRecentQuestionsUseCase(inMemoryQuestionsRepository)
   })
   it('should be able to fetch recent questions', async () => {
-    for (let i = 0; i <= 22; i++) {
-      await inMemoryQuestionsRepository.create(
-        makeQuestion({ createdAt: new Date(2023, 11, 11) })
-      )
-      await inMemoryQuestionsRepository.create(
-        makeQuestion({ createdAt: new Date(2023, 11, 10) })
-      )
-      await inMemoryQuestionsRepository.create(
-        makeQuestion({ createdAt: new Date(2023, 11, 15) })
-      )
-    }
+    await inMemoryQuestionsRepository.create(
+      makeQuestion({ createdAt: new Date(2023, 11, 11) })
+    )
+    await inMemoryQuestionsRepository.create(
+      makeQuestion({ createdAt: new Date(2023, 11, 10) })
+    )
+    await inMemoryQuestionsRepository.create(
+      makeQuestion({ createdAt: new Date(2023, 11, 15) })
+    )
     const { questions } = await sut.execute({
       page: 1,
     })
@@ -44,6 +42,6 @@ describe('Fetch Recent Questions', () => {
     const { questions } = await sut.execute({
       page: 2,
     })
-    expect(questions).toHaveLength(2)
+    expect(questions).toHaveLength(3)
   })
 })
