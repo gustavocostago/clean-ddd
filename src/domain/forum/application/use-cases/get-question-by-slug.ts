@@ -1,12 +1,16 @@
+import { Either, right } from '@/core/either'
 import { Question } from '../../enterprise/entities/question'
 import { QuestionsRepository } from '../repositories/questions-repository'
 
 interface GetQuestionByIdUseCaseRequest {
   slug: string
 }
-interface GetQuestionByIdUseCaseResponse {
-  question: Question
-}
+type GetQuestionByIdUseCaseResponse = Either<
+  null,
+  {
+    question: Question
+  }
+>
 
 export class GetQuestionByIdUseCase {
   constructor(private questionsRepository: QuestionsRepository) {}
@@ -16,6 +20,6 @@ export class GetQuestionByIdUseCase {
   }: GetQuestionByIdUseCaseRequest): Promise<GetQuestionByIdUseCaseResponse> {
     const question = await this.questionsRepository.findBySlug(slug)
     if (!question) throw new Error('Question not Found')
-    return { question }
+    return right({ question })
   }
 }
